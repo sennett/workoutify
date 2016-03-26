@@ -1,9 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-let Countdown = ({timer}) => {
+let Countdown = ({timers, currentTimer}) => {
+  let timerNodes = timers.map((timer, index) => (
+    <div key={index}>{timer}</div>
+  ))
   return (
-    <div>{timer}</div>
+    <div>
+      {timerNodes}
+    </div>
   )
 }
 

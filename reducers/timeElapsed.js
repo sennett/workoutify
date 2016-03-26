@@ -1,12 +1,26 @@
 const initialState = {
-  timer: 30000 // seconds
+  timers: [
+    30000, // seconds
+    30000
+  ],
+  currentTimer: 0
 }
 
 const timeElapsed = (state = initialState, action) => {
   switch (action.type) {
     case 'TIME_ELAPSED':
       return Object.assign({}, state, {
-        timer: state.timer - action.time
+        timers: state.timers.map((timer, index) => {
+          if (index === state.currentTimer) {
+            return timer - action.time
+          } else {
+            return timer
+          }
+        })
+      })
+    case 'NEXT_TIMER':
+      return Object.assign({}, state, {
+        currentTimer: state.currentTimer + 1
       })
     case 'RESET':
       return Object.assign({}, state, initialState)
