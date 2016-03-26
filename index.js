@@ -3,11 +3,11 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import timeElapsed from './reducers/timeElapsed'
+import workoutifyApp from './reducers'
 import App from './components/App'
-import timeElapsedAction from './actions/timeElapsed'
+import timer from './otherThings/timer'
 
-let store = createStore(timeElapsed)
+let store = createStore(workoutifyApp)
 
 render(
   <Provider store={store}>
@@ -16,11 +16,4 @@ render(
   document.getElementById('root')
 )
 
-let lastTime = Date.now()
-
-setInterval(() => {
-  let currentTime = Date.now()
-  let timeElapsed = currentTime - lastTime
-  store.dispatch(timeElapsedAction(timeElapsed))
-  lastTime = currentTime
-}, 100)
+timer(store)

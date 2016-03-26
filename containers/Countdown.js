@@ -7,7 +7,7 @@ let Countdown = ({timer}) => {
   )
 }
 
-const mapStateToProps = (state) => state
+const mapStateToProps = (state) => state.timeElapsed
 
 Countdown = connect(mapStateToProps)(Countdown)
 
