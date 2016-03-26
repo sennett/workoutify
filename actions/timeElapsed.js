@@ -1,6 +1,6 @@
-const timeElapsed = () => ({
+const timeElapsed = (milliseconds) => ({
   type: 'TIME_ELAPSED',
-  time: Date.now()
+  time: milliseconds
 })
 
 export default timeElapsed

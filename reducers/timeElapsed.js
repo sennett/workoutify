@@ -1,20 +1,12 @@
 const initialState = {
-  ui: {
-    timeElapsed: null
-  },
-  startTime: Date.now()
+  timer: 30000 // seconds
 }
 
 const timeElapsed = (state = initialState, action) => {
   switch (action.type) {
     case 'TIME_ELAPSED':
-      let elapsedTimeInSeconds = (action.time - state.startTime) / 1000
-      let minutes = Math.floor(elapsedTimeInSeconds / 60)
-      let seconds = elapsedTimeInSeconds % 60
       return Object.assign({}, state, {
-        ui: {
-          timeElapsed: `${minutes}:${seconds}`
-        }
+        timer: state.timer - action.time
       })
     default:
       return state

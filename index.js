@@ -16,6 +16,11 @@ render(
   document.getElementById('root')
 )
 
+let lastTime = Date.now()
+
 setInterval(() => {
-  store.dispatch(timeElapsedAction())
+  let currentTime = Date.now()
+  let timeElapsed = currentTime - lastTime
+  store.dispatch(timeElapsedAction(timeElapsed))
+  lastTime = currentTime
 }, 100)

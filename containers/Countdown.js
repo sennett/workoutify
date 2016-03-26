@@ -1,15 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-let Countdown = ({timeElapsed}) => {
+let Countdown = ({timer}) => {
   return (
-    <div>{timeElapsed}</div>
+    <div>{timer}</div>
   )
 }
 
-const mapStateToProps = (state) => ({
-  timeElapsed: state.ui.timeElapsed
-})
+const mapStateToProps = (state) => state
 
 Countdown = connect(mapStateToProps)(Countdown)
 
