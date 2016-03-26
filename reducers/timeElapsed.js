@@ -8,6 +8,8 @@ const timeElapsed = (state = initialState, action) => {
       return Object.assign({}, state, {
         timer: state.timer - action.time
       })
+    case 'RESET':
+      return Object.assign({}, state, initialState)
     default:
       return state
   }
