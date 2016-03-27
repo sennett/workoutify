@@ -3,7 +3,7 @@ import React from 'react'
 import { start, pause, reset } from '../actions/controls'
 
 let Controls = ({start, pause, reset}) => (
-  <div>
+  <div className="c-workout-controls">
     <button onClick={start}>Start</button>
     <button onClick={pause}>Pause</button>
     <button onClick={reset}>Reset</button>

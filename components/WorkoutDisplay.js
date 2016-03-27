@@ -2,7 +2,7 @@ import React from 'react'
 import Exercises from '../containers/Exercises'
 
 const WorkoutDisplay = () => (
-  <div>
+  <div className="u-full-height">
     <Exercises />
   </div>
 )
