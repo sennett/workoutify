@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 import Timer from '../components/Timer'
 
 const getCurrentExercise = (currentExercise) => (
-  <div className="c-current-exercise">
-    <div className="c-current-exercise__name">{currentExercise.name}</div>
-    <div className="c-current-exercise__timer">
-      <Timer timer={currentExercise.timer} />
+  <div className="c-current-exercise  o-vertically-centered">
+    <div className="o-vertically-centered__content">
+      <div className="c-current-exercise__name">{currentExercise.name}</div>
+      <div className="c-current-exercise__timer">
+        <Timer timer={currentExercise.timer} />
+      </div>
     </div>
   </div>
 )
