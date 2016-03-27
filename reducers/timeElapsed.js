@@ -1,13 +1,13 @@
 const initialState = {
   exercises: [{
     name: 'run on treadmill',
-    timer: 1000
+    timer: 3000
   },{
     name: 'burpies',
-    timer: 1000
+    timer: 4000
   },{
     name: 'do something else',
-    timer: 1000
+    timer: 5000
   }],
   currentExercise: 0,
   previousTime: null,

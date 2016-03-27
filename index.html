@@ -40,8 +40,8 @@
     }
 
       .c-exercises__current {
-        height: calc(100% - 60px);
-        height: 90%;
+        height: calc(100% - 60px - 60px);
+        height: 80%;
         background-color: #F1F9FA;
         color: #8BCBCA;
       }
@@ -53,6 +53,13 @@
         color: #CB732B;
       }
 
+      .c-exercises__total-time-left {
+        height: calc(60px);
+        height: 10%;
+        background-color: #FDF8EC;
+        color: #E4BA3F;
+      }
+
     .c-current-exercise {
       text-align: center;
       font-size: 60px;
@@ -60,9 +67,15 @@
 
       .c-current-exercise__timer {
         color: #38404A;
+        font-weight: bold;
       }
 
     .c-next-exercise {
+      text-align: center;
+      font-size: 40px;
+    }
+
+    .c-total-time-remaining {
       text-align: center;
       font-size: 40px;
     }

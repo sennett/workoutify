@@ -21,7 +21,13 @@ const getNextExercise = (nextExercise) => (
     ''
 )
 
-let Exercises = ({currentExercise, nextExercise}) => {
+const getTotalTimeRemaining = (totalTimeRemaining) => (
+  <div className="c-total-time-remaining  o-vertically-centered__content">
+    Total time remaining <Timer timer={totalTimeRemaining} />
+  </div>
+)
+
+let Exercises = ({currentExercise, nextExercise, totalTimeRemaining}) => {
   return (
     <div className="c-exercises">
       <div className="c-exercises__current  o-vertically-centered">
@@ -30,6 +36,9 @@ let Exercises = ({currentExercise, nextExercise}) => {
       <div className="c-exercises__next  o-vertically-centered">
         {getNextExercise(nextExercise)}
       </div>
+      <div className="c-exercises__total-time-left  o-vertically-centered">
+        {getTotalTimeRemaining(totalTimeRemaining)}
+      </div>
     </div>
   )
 }
@@ -37,7 +46,14 @@ let Exercises = ({currentExercise, nextExercise}) => {
 const mapStateToProps = (state) => {
   return {
     currentExercise: state.timeElapsed.exercises[state.timeElapsed.currentExercise],
-    nextExercise: state.timeElapsed.exercises[state.timeElapsed.currentExercise + 1]
+    nextExercise: state.timeElapsed.exercises[state.timeElapsed.currentExercise + 1],
+    totalTimeRemaining: state.timeElapsed.exercises.reduce((totalTime, exercise, index) => {
+      let returnable = totalTime
+      if (index >= state.timeElapsed.currentExercise) {
+        returnable += exercise.timer
+      }
+      return returnable
+    }, 0)
   }
 }
 
