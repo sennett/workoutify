@@ -1,20 +1,28 @@
 const initialState = {
-  exercises: [
-    3000, // seconds
-    3000,
-    4000
-  ],
+  exercises: [{
+    name: 'run on treadmill',
+    timer: 3000
+  },{
+    name: 'burpies',
+    timer: 3000
+  },{
+    name: 'do something else',
+    timer: 3000
+  }],
   currentExercise: 0,
-  previousTime: null
+  previousTime: null,
+  complete: false
 }
 
 function updateTimer (state, action) {
   return Object.assign({}, state, {
-    exercises: state.exercises.map((timer, index) => {
+    exercises: state.exercises.map((exercise, index) => {
       if (index === state.currentExercise) {
-        return timer - action.time
+        return Object.assign({}, exercise, {
+          timer: exercise.timer - action.time
+        })
       } else {
-        return timer
+        return exercise
       }
     })
   })
@@ -22,9 +30,12 @@ function updateTimer (state, action) {
 
 function maybeMoveToNextTimer (state) {
   let newState = Object.assign({}, state)
-  let currentTime = state.exercises[state.currentExercise]
+  let currentTime = state.exercises[state.currentExercise].timer
   if (state.previousTime > 0 && currentTime <= 0) {
     newState.currentExercise++
+  }
+  if (newState.currentExercise === newState.exercises.length) {
+    newState.complete = true
   }
   newState.previousTime = currentTime
   return newState

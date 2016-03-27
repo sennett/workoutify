@@ -1,4 +1,5 @@
 import timeElapsedAction from '../actions/timeElapsed'
+import { pause } from '../actions/controls'
 
 const timer = (store) => {
   let running = false
@@ -26,7 +27,7 @@ const timer = (store) => {
       start()
     }
 
-    if (running && state.controls === 'PAUSED') {
+    if (running && state.controls === 'PAUSED' || state.timeElapsed.complete) {
       pause()
     }
   })
