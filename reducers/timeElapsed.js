@@ -4,14 +4,14 @@ const initialState = {
     3000,
     4000
   ],
-  currentTimer: 0,
+  currentExercise: 0,
   previousTime: null
 }
 
 function updateTimer (state, action) {
   return Object.assign({}, state, {
     exercises: state.exercises.map((timer, index) => {
-      if (index === state.currentTimer) {
+      if (index === state.currentExercise) {
         return timer - action.time
       } else {
         return timer
@@ -22,9 +22,9 @@ function updateTimer (state, action) {
 
 function maybeMoveToNextTimer (state) {
   let newState = Object.assign({}, state)
-  let currentTime = state.exercises[state.currentTimer]
+  let currentTime = state.exercises[state.currentExercise]
   if (state.previousTime > 0 && currentTime <= 0) {
-    newState.currentTimer++
+    newState.currentExercise++
   }
   newState.previousTime = currentTime
   return newState
