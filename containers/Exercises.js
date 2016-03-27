@@ -1,16 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Timer from '../components/Timer'
 
 const getCurrentExercise = (currentExercise) => (
   <div className="c-exercises__current  c-current-exercise">
     <div className="c-current-exercise__name">{currentExercise.name}</div>
-    <div className="c-current-exercise__timer">{currentExercise.timer}</div>
+    <div className="c-current-exercise__timer">
+      <Timer timer={currentExercise.timer} />
+    </div>
   </div>
 )
 
 const getNextExercise = (nextExercise) => (
   nextExercise ?
-    <div className="c-exercises__next">Next up: {nextExercise.name} - {nextExercise.timer}</div> :
+    (
+      <div className="c-exercises__next">
+        Next up: {nextExercise.name} - <Timer timer={nextExercise.timer} />
+      </div>
+    ) :
     ''
 )
 
