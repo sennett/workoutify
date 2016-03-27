@@ -1,21 +1,34 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-let Exercises = ({exercises, currentExercise}) => {
-  let timerNodes = exercises.map((exercise, exerciseIndex) => {
-    let style = {
-      opacity: exerciseIndex === currentExercise ? 1 : 0.5
-    }
-    return <div key={exerciseIndex} style={style}>{exercise.name} - {exercise.timer}</div>
-  })
+const getCurrentExercise = (currentExercise) => (
+  <div className="c-exercises__current  c-current-exercise">
+    <div className="c-current-exercise__name">{currentExercise.name}</div>
+    <div className="c-current-exercise__timer">{currentExercise.timer}</div>
+  </div>
+)
+
+const getNextExercise = (nextExercise) => (
+  nextExercise ?
+    <div className="c-exercises__next">Next up: {nextExercise.name} - {nextExercise.timer}</div> :
+    ''
+)
+
+let Exercises = ({currentExercise, nextExercise}) => {
   return (
-    <div>
-      {timerNodes}
+    <div className="u-full-height  c-exercises">
+      {getCurrentExercise(currentExercise)}
+      {getNextExercise(nextExercise)}
     </div>
   )
 }
 
-const mapStateToProps = (state) => state.timeElapsed
+const mapStateToProps = (state) => {
+  return {
+    currentExercise: state.timeElapsed.exercises[state.timeElapsed.currentExercise],
+    nextExercise: state.timeElapsed.exercises[state.timeElapsed.currentExercise + 1]
+  }
+}
 
 Exercises = connect(mapStateToProps)(Exercises)
 

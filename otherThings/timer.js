@@ -26,7 +26,6 @@ const timer = (store) => {
     if (!running && state.controls === 'STARTED') {
       start()
     }
-
     if (running && state.controls === 'PAUSED' || state.timeElapsed.complete) {
       pause()
     }

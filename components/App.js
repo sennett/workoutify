@@ -1,10 +1,10 @@
 import React from 'react'
-import Countdown from '../containers/Exercises'
+import WorkoutDisplay from '../components/WorkoutDisplay'
 import Controls from '../containers/Controls'
 
 const App = () => (
-  <div>
-    <Countdown />
+  <div className="u-full-height">
+    <WorkoutDisplay />
     <Controls />
   </div>
 )

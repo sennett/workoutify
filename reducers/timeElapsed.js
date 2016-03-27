@@ -1,13 +1,13 @@
 const initialState = {
   exercises: [{
     name: 'run on treadmill',
-    timer: 3000
+    timer: 1000
   },{
     name: 'burpies',
-    timer: 3000
+    timer: 1000
   },{
     name: 'do something else',
-    timer: 3000
+    timer: 1000
   }],
   currentExercise: 0,
   previousTime: null,
@@ -28,7 +28,7 @@ function updateTimer (state, action) {
   })
 }
 
-function maybeMoveToNextTimer (state) {
+function maybeMoveToNextExercise (state) {
   let newState = Object.assign({}, state)
   let currentTime = state.exercises[state.currentExercise].timer
   if (state.previousTime > 0 && currentTime <= 0) {
@@ -45,7 +45,7 @@ const timeElapsed = (state = initialState, action) => {
   switch (action.type) {
     case 'TIME_ELAPSED':
       state = updateTimer(state, action)
-      state = maybeMoveToNextTimer(state)
+      state = maybeMoveToNextExercise(state)
       return state
     case 'RESET':
       return Object.assign({}, state, initialState)
