@@ -1,7 +1,8 @@
 const initialState = {
   timers: [
     3000, // seconds
-    3000
+    3000,
+    4000
   ],
   currentTimer: 0,
   previousTime: null
