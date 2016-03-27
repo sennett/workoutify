@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-let Exercises = ({exercises, currentTimer}) => {
-  let timerNodes = exercises.map((timer, index) => (
-    <div key={index}>{timer}</div>
-  ))
+let Exercises = ({exercises, currentExercise}) => {
+  let timerNodes = exercises.map((timer, exerciseIndex) => {
+    let style = {
+      opacity: exerciseIndex === currentExercise ? 1 : 0.5
+    }
+    return <div key={exerciseIndex} style={style}>{timer}</div>
+  })
   return (
     <div>
       {timerNodes}
