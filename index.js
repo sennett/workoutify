@@ -6,6 +6,7 @@ import { createStore } from 'redux'
 import workoutifyApp from './reducers'
 import App from './components/App'
 import timer from './otherThings/timer'
+import moveToNextExercise from './otherThings/moveToNextExercise'
 
 let store = createStore(workoutifyApp)
 
@@ -17,3 +18,4 @@ render(
 )
 
 timer(store)
+moveToNextExercise(store)
