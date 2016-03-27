@@ -15,7 +15,7 @@ const getNextExercise = (nextExercise) => (
   nextExercise ?
     (
       <div className="c-next-exercise  o-vertically-centered__content">
-        Next up: {nextExercise.name} - <Timer timer={nextExercise.timer} />
+        Next: {nextExercise.name} (<Timer timer={nextExercise.timer} />)
       </div>
     ) :
     ''
