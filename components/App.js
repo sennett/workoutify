@@ -1,5 +1,5 @@
 import React from 'react'
-import Countdown from '../containers/Countdown'
+import Countdown from '../containers/Exercises'
 import Controls from '../containers/Controls'
 
 const App = () => (
