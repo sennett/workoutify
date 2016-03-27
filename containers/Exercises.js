@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Timer from '../components/Timer'
 
 const getCurrentExercise = (currentExercise) => (
-  <div className="c-exercises__current  c-current-exercise">
+  <div className="c-current-exercise">
     <div className="c-current-exercise__name">{currentExercise.name}</div>
     <div className="c-current-exercise__timer">
       <Timer timer={currentExercise.timer} />
@@ -14,7 +14,7 @@ const getCurrentExercise = (currentExercise) => (
 const getNextExercise = (nextExercise) => (
   nextExercise ?
     (
-      <div className="c-exercises__next">
+      <div>
         Next up: {nextExercise.name} - <Timer timer={nextExercise.timer} />
       </div>
     ) :
@@ -23,9 +23,13 @@ const getNextExercise = (nextExercise) => (
 
 let Exercises = ({currentExercise, nextExercise}) => {
   return (
-    <div className="u-full-height  c-exercises">
-      {getCurrentExercise(currentExercise)}
-      {getNextExercise(nextExercise)}
+    <div className="c-exercises">
+      <div className="c-exercises__current">
+        {getCurrentExercise(currentExercise)}
+      </div>
+      <div className="c-exercises__next">
+        {getNextExercise(nextExercise)}
+      </div>
     </div>
   )
 }
