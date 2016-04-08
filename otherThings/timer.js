@@ -1,32 +1,32 @@
 import timeElapsedAction from '../actions/timeElapsed'
-import { pause } from '../actions/controls'
+import { started, paused } from '../actions/controls'
+import { controlStates } from '../reducers/controls'
 
 const timer = (store) => {
-  let running = false
   let interval
 
   const start = () => {
     let lastTime = Date.now()
     interval = setInterval(() => {
-      running = true
       let currentTime = Date.now()
       let timeElapsed = currentTime - lastTime
       store.dispatch(timeElapsedAction(timeElapsed))
       lastTime = currentTime
     }, 100)
+    store.dispatch(started())
   }
 
   const pause = () => {
     clearInterval(interval)
-    running = false
+    store.dispatch(paused())
   }
 
   store.subscribe(() => {
     let state = store.getState()
-    if (!running && state.controls === 'STARTED') {
+    if (state.controls === controlStates.STARTING) {
       start()
     }
-    if (running && state.controls === 'PAUSED' || state.timeElapsed.complete) {
+    if (state.controls === controlStates.PAUSING) {
       pause()
     }
   })
