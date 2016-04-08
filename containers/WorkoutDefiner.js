@@ -6,13 +6,13 @@ let WorkoutDefiner = ({modifyWorkout}) => {
   let textareaNode
   return (
     <div className="u-full-height">
-      <textarea className="c-workout-input" ref={(node) => textareaNode = node} />
+      <textarea className="c-workout-input" ref={(node) => {textareaNode = node}} />
       <button onClick={() => modifyWorkout(textareaNode.value)}>save</button>
     </div>
   )
 }
 
-const mapStateToProps = (state) => state
+const mapStateToProps = (state) => state // don't care about the state here
 
 const mapDispatchToProps = (dispatch) => ({
   modifyWorkout: (rawWorkoutData) => {
