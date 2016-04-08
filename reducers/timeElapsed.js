@@ -1,5 +1,6 @@
 import { actionTypes as timeElapsedActionTypes } from '../actions/timeElapsed'
 import { actionTypes as controlActionTypes } from '../actions/controls'
+import { ACTION_TYPE as MODIFY_WORKOUT } from '../actions/modifyWorkout'
 
 const initialState = {
   exercises: [{
@@ -52,6 +53,9 @@ const timeElapsed = (state = initialState, action) => {
       return state
     case controlActionTypes.RESET:
       return Object.assign({}, state, initialState)
+    case MODIFY_WORKOUT:
+      console.log('action received')
+      return state
     default:
       return state
   }
