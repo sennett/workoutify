@@ -1,6 +1,8 @@
-const timeElapsed = (milliseconds) => ({
-  type: 'TIME_ELAPSED',
+export const timeElapsed = (milliseconds) => ({
+  type: actionTypes.TIME_ELAPSED,
   time: milliseconds
 })
 
-export default timeElapsed
+export const actionTypes = {
+  TIME_ELAPSED: Symbol('TIME_ELAPSED')
+}

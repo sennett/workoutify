@@ -1,3 +1,6 @@
+import { actionTypes as timeElapsedActionTypes } from '../actions/timeElapsed'
+import { actionTypes as controlActionTypes } from '../actions/controls'
+
 const initialState = {
   exercises: [{
     name: 'run on treadmill',
@@ -43,11 +46,11 @@ function maybeMoveToNextExercise (state) {
 
 const timeElapsed = (state = initialState, action) => {
   switch (action.type) {
-    case 'TIME_ELAPSED':
+    case timeElapsedActionTypes.TIME_ELAPSED:
       state = updateTimer(state, action)
       state = maybeMoveToNextExercise(state)
       return state
-    case 'RESET':
+    case controlActionTypes.RESET:
       return Object.assign({}, state, initialState)
     default:
       return state

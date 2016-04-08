@@ -1,4 +1,4 @@
-import timeElapsedAction from '../actions/timeElapsed'
+import { timeElapsed as timeElapsedAction } from '../actions/timeElapsed'
 import { started, paused } from '../actions/controls'
 import { controlStates } from '../reducers/controls'
 
