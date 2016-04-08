@@ -1,9 +1,15 @@
 import React from 'react'
-import WorkoutDisplay from '../components/WorkoutDisplay'
+import WorkoutDisplay from './WorkoutDisplay'
+import WorkoutDefiner from '../containers/WorkoutDefiner'
 
 const App = () => (
-  <div className="u-full-height">
-    <WorkoutDisplay />
+  <div className="u-full-height  c-layout">
+    <div className="u-full-height  c-layout__workout-definer">
+      <WorkoutDefiner />
+    </div>
+    <div className="u-full-height  c-layout__workout-display">
+      <WorkoutDisplay />
+    </div>
   </div>
 )
 
