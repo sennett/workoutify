@@ -3,10 +3,11 @@ import { modifyWorkout } from '../actions/modifyWorkout'
 import { connect } from 'react-redux'
 
 let WorkoutDefiner = ({modifyWorkout}) => {
+  let textareaNode
   return (
     <div className="u-full-height">
-      <textarea className="c-workout-input" />
-      <button onClick={modifyWorkout}>save</button>
+      <textarea className="c-workout-input" ref={(node) => textareaNode = node} />
+      <button onClick={() => modifyWorkout(textareaNode.value)}>save</button>
     </div>
   )
 }
@@ -14,8 +15,8 @@ let WorkoutDefiner = ({modifyWorkout}) => {
 const mapStateToProps = (state) => state
 
 const mapDispatchToProps = (dispatch) => ({
-  modifyWorkout: () => {
-    dispatch(modifyWorkout('hello'))
+  modifyWorkout: (rawWorkoutData) => {
+    dispatch(modifyWorkout(rawWorkoutData))
   }
 })
 

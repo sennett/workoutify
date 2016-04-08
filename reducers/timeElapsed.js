@@ -54,7 +54,7 @@ const timeElapsed = (state = initialState, action) => {
     case controlActionTypes.RESET:
       return Object.assign({}, state, initialState)
     case MODIFY_WORKOUT:
-      console.log('action received')
+      console.log('action received ' + action.rawWorkoutData)
       return state
     default:
       return state
